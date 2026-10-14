@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: Roboto, Arial, sans-serif;
+  color: #252525;
+  background: #fff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: #fff;
+}
+
+button, input { font: inherit; }
+button { -webkit-tap-highlight-color: transparent; }
+
+.todo-app {
+  width: min(100% - 40px, 560px);
+  margin: 0 auto;
+  padding: 38px 0 48px;
+}
+
+h1 {
+  margin: 0 0 26px;
+  color: #252525;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -1.15px;
+  text-align: center;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 40px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px 8px;
+  border: 0;
+  color: #6b6b6b;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  transition: color 140ms ease;
+}
+
+.tab:hover, .tab--selected { color: #222; }
+
+.tab--selected::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: #2f80ed;
+  content: '';
+}
+
+.add-form {
+  display: flex;
+  gap: 12px;
+  margin: 19px 0 15px;
+}
+
+.add-form input {
+  min-width: 0;
+  height: 48px;
+  flex: 1;
+  padding: 0 12px;
+  border: 1px solid #bdbdbd;
+  border-radius: 8px;
+  outline: 0;
+  color: #333;
+  font-size: 14px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.add-form input::placeholder { color: #bdbdbd; }
+.add-form input:focus {
+  border-color: #2f80ed;
+  box-shadow: 0 0 0 3px rgb(47 128 237 / 12%);
+}
+
+.add-button {
+  min-width: 100px;
+  height: 48px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 8px;
+  background: #2f80ed;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgb(47 128 237 / 18%);
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.add-button:hover { background: #1f70dc; }
+.add-button:active { transform: translateY(1px); }
+
+.task-list { padding-top: 1px; }
+
+.task-row {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+}
+
+.task-checkbox {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  margin: 0;
+  accent-color: #2f80ed;
+  cursor: pointer;
+}
+
+.task-label {
+  min-width: 0;
+  flex: 1;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.task-row--completed .task-label {
+  color: #7b7b7b;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.icon-button {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  color: #828282;
+  background: transparent;
+  cursor: pointer;
+  opacity: .75;
+  transition: color 140ms ease, background 140ms ease, opacity 140ms ease;
+}
+
+.icon-button:hover { color: #eb5757; background: #fff1f1; opacity: 1; }
+.icon-button svg { width: 17px; height: 17px; fill: currentColor; }
+
+.list-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.delete-all-button {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 13px;
+  border: 0;
+  border-radius: 4px;
+  background: #eb5757;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 140ms ease;
+}
+
+.delete-all-button:hover { background: #d94343; }
+.delete-all-button svg { width: 14px; height: 14px; fill: currentColor; }
+
+.empty-state {
+  margin: 20px 0 0;
+  color: #8b8b8b;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+button:focus-visible, input:focus-visible {
+  outline: 3px solid rgb(47 128 237 / 35%);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .todo-app { width: min(100% - 32px, 560px); padding-top: 28px; }
+  h1 { margin-bottom: 20px; font-size: 28px; }
+  .add-form { gap: 9px; }
+  .add-button { min-width: 78px; padding: 0 15px; }
+}
